@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">CashLey</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="termofservices"><u>Terms of Services</u></string>
+    <string name="termservices">Terms of Services</string>
+    <string name="privacypolicy"><u>Privacy Policy</u></string>
+    <string name="floating_button">Floating Button</string>
+    <string name="categories">Categories</string>
+    <string name="profile">Profile</string>
+    <string name="help">Help</string>
+    <string name="key_icon">Key Icon</string>
+    <string name="login_with_email">Login With Email</string>
+    <string name="register">REGISTER</string>
+    <string name="sign_in">Sign In</string>
+    <string name="follow_us"><u>Follow Us</u></string>
+    <string-array name="occupation">
+        <item>Select</item>
+        <item>Salaried</item>
+        <item>Self Employed</item>
+        <item>Student</item>
+        <item>Other</item>
+    </string-array>
+</resources>
