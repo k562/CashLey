@@ -525,7 +525,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/animation_view"
-                    maxads:adUnitId="2d39a2c1a8fa239b" />
+                    maxads:adUnitId="e0985509a2b87408" />
 
             </LinearLayout>
 

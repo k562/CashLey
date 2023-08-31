@@ -413,7 +413,7 @@
                     android:visibility="visible"
                     maxads:adFormat="MREC"
                     android:gravity="center"
-                    maxads:adUnitId="5928a96fc3c867c5" />
+                    maxads:adUnitId="68e537a40337b3b9" />
 
             </LinearLayout>
 

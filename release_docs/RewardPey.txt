@@ -1,0 +1,16 @@
+PS C:\Program Files\Java\jdk-17\bin> ./keytool -list -v -keystore "C:\Yash Android\CashLey\release_docs\RewardPay.jks" -alias RewardPayKey -storepass rewardpay23 -keypass rewardpay23
+Alias name: RewardPayKey
+Creation date: 31-Aug-2023
+Entry type: PrivateKeyEntry
+Certificate chain length: 1
+Certificate[1]:
+Owner: ST=Delhi, L=Delhi, O=Mindgeeks, OU=Mindgeeks, CN=Yash
+Issuer: ST=Delhi, L=Delhi, O=Mindgeeks, OU=Mindgeeks, CN=Yash
+Serial number: 1
+Valid from: Thu Aug 31 13:55:50 IST 2023 until: Mon Aug 24 13:55:50 IST 2048
+Certificate fingerprints:
+         SHA1: 96:04:A5:FC:98:59:8A:1E:DB:EC:53:8B:25:54:5C:84:6A:FB:3D:F9
+         SHA256: 30:1C:6C:B6:60:C2:5F:B2:D5:84:EF:F0:55:0A:70:C9:30:64:15:7A:DD:BA:AF:6A:C8:9A:12:31:19:CA:0F:1D
+Signature algorithm name: SHA256withRSA
+Subject Public Key Algorithm: 2048-bit RSA key
+Version: 1

@@ -488,7 +488,7 @@
             <com.applovin.mediation.ads.MaxAdView
                 android:id="@+id/adView"
                 xmlns:maxads="http://schemas.applovin.com/android/1.0"
-                maxads:adUnitId="2d39a2c1a8fa239b"
+                maxads:adUnitId="e0985509a2b87408"
                 android:layout_width="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_height="50dp"

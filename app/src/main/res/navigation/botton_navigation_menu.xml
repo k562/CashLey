@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/home"
-        android:name="com.cashley.app.fragments.HomeFragment"
+        android:name="com.rewardpay.app.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/invite"
-        android:name="com.cashley.app.fragments.InviteFragment"
+        android:name="com.rewardpay.app.fragments.InviteFragment"
         android:label="fragment_invite"
         tools:layout="@layout/fragment_invite" />
     <fragment
         android:id="@+id/profile"
-        android:name="com.cashley.app.fragments.ProfileFragment"
+        android:name="com.rewardpay.app.fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

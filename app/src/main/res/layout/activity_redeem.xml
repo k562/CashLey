@@ -61,7 +61,7 @@
                 android:id="@+id/balance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/money__icon_4"
+                android:drawableStart="@drawable/coins_icon_1"
                 android:drawablePadding="5dp"
                 android:gravity="center"
                 android:text="0.0"
@@ -69,6 +69,21 @@
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/availableBalance" />
+
+            <TextView
+                android:id="@+id/totalAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.0"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:drawablePadding="0dp"
+                android:drawableStart="@drawable/ic_rupee_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/balance"
                 app:layout_constraintTop_toBottomOf="@+id/availableBalance" />
 
             <ImageView

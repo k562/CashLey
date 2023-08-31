@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/poppins"
-                android:text="CashLey"
+                android:text="@string/app_name"
                 android:textColor="@color/off_black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -48,47 +48,47 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="50dp"
-                android:src="@drawable/login_image" />
+                android:src="@drawable/login_image6" />
 
-<!--            <androidx.cardview.widget.CardView-->
-<!--                android:id="@+id/googleLoginButton"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="1"-->
-<!--                android:layout_gravity="center"-->
-<!--                app:cardCornerRadius="4dp"-->
-<!--                app:cardBackgroundColor="@color/white"-->
-<!--                app:cardUseCompatPadding="true">-->
+            <!--            <androidx.cardview.widget.CardView-->
+            <!--                android:id="@+id/googleLoginButton"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:layout_gravity="center"-->
+            <!--                app:cardCornerRadius="4dp"-->
+            <!--                app:cardBackgroundColor="@color/white"-->
+            <!--                app:cardUseCompatPadding="true">-->
 
-                <LinearLayout
-                    android:id="@+id/googleLoginButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center"
-                    android:elevation="2dp"
-                    android:background="@drawable/background_login"
-                    android:padding="10dp">
+            <LinearLayout
+                android:id="@+id/googleLoginButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/background_login"
+                android:elevation="2dp"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/google_image"
-                        android:scaleType="fitXY"
-                        android:layout_marginEnd="10dp"/>
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="10dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/google_image" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/poppins"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:text="Login With Google"
-                        android:textColor="@color/off_black" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:text="Login With Google"
+                    android:textColor="@color/off_black"
+                    android:textStyle="bold" />
 
-                </LinearLayout>
+            </LinearLayout>
 
-<!--            </androidx.cardview.widget.CardView>-->
+            <!--            </androidx.cardview.widget.CardView>-->
 
             <TextView
                 android:layout_width="match_parent"
@@ -97,9 +97,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="3dp"
                 android:fontFamily="@font/poppins"
-                android:textColor="@color/off_black"
                 android:text="By Continuing You Indicate that You have Read and Agree to our Privacy Policy and Terms Of Services."
-                />
+                android:textColor="@color/off_black" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -111,15 +110,14 @@
                 android:visibility="visible"
                 tools:visibility="visible">
 
-
                 <TextView
                     android:id="@+id/txt_privacy"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/poppins"
-                    android:text="@string/privacypolicy"
                     android:gravity="start"
+                    android:text="@string/privacypolicy"
                     android:textColor="@color/green" />
 
                 <TextView
@@ -132,7 +130,6 @@
                     android:text="@string/termofservices"
                     android:textColor="@color/green" />
 
-
             </LinearLayout>
 
         </LinearLayout>
@@ -143,10 +140,10 @@
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

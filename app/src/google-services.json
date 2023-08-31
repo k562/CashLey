@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "369787717092-t3h95m8q2vog8vn72p863o1gske8uqf0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cashley.app",
+            "certificate_hash": "fe32f812a9a3547f1c938cbca4a4c205915285b6"
+          }
+        },
+        {
           "client_id": "369787717092-hhl7a2qp614qedgld4e5pe7c7tdtj5n1.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -135,6 +143,35 @@
             "certificate_hash": "90f049f1a1ed1a17561d527867119c43617027ec"
           }
         },
+        {
+          "client_id": "369787717092-hhl7a2qp614qedgld4e5pe7c7tdtj5n1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_UF48PEfR_wp7fQiNzyzAsnjLHuJ397s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "369787717092-hhl7a2qp614qedgld4e5pe7c7tdtj5n1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:369787717092:android:4180623fc149d5976ff3f1",
+        "android_client_info": {
+          "package_name": "com.rewardpay.app"
+        }
+      },
+      "oauth_client": [
         {
           "client_id": "369787717092-hhl7a2qp614qedgld4e5pe7c7tdtj5n1.apps.googleusercontent.com",
           "client_type": 3

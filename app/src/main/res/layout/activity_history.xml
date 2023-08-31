@@ -23,16 +23,15 @@
         android:id="@+id/refresh"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/toolBar"
         app:layout_constraintBottom_toTopOf="@id/adView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolBar">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:focusable="true"
-            >
+            android:focusable="true">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -72,13 +71,29 @@
                         android:id="@+id/referAmount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/coins_icon_1"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
                         android:text="0.0"
                         android:textColor="@color/white"
                         android:textSize="16sp"
-                        android:drawablePadding="5dp"
-                        android:drawableStart="@drawable/money__icon_4"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/totalReferAmount" />
+
+                    <TextView
+                        android:id="@+id/totalAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:drawableStart="@drawable/ic_rupee_icon"
+                        android:drawablePadding="0dp"
+                        android:gravity="center"
+                        android:text="0.0"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/referAmount"
                         app:layout_constraintTop_toBottomOf="@+id/totalReferAmount" />
 
                     <ImageView
@@ -223,40 +238,40 @@
                     android:id="@+id/referRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/linear"
-                    tools:listitem="@layout/history_list_item"
-                    android:visibility="gone"/>
+                    tools:listitem="@layout/history_list_item" />
 
                 <LinearLayout
                     android:id="@+id/noListFound"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:orientation="vertical"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginTop="50dp"
-                    app:layout_constraintTop_toBottomOf="@+id/linear"
-                    android:orientation="vertical"
-                    android:visibility="gone">
+                    app:layout_constraintTop_toBottomOf="@+id/linear">
 
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_search_icon"/>
+                        android:src="@drawable/ic_search_icon" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="No History Found"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:fontFamily="@font/poppins"
                         android:layout_marginTop="10dp"
-                        android:textColor="@color/green"/>
+                        android:fontFamily="@font/poppins"
+                        android:text="No History Found"
+                        android:textColor="@color/green"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -268,17 +283,16 @@
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    <com.applovin.mediation.ads.MaxAdView
+    <com.applovin.mediation.ads.MaxAdView xmlns:maxads="http://schemas.applovin.com/android/1.0"
         android:id="@+id/adView"
-        xmlns:maxads="http://schemas.applovin.com/android/1.0"
-        maxads:adUnitId="2d39a2c1a8fa239b"
         android:layout_width="match_parent"
-        android:layout_marginTop="20dp"
         android:layout_height="50dp"
+        android:layout_marginTop="20dp"
         android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        maxads:adUnitId="e0985509a2b87408" />
 
     <ProgressBar
         android:id="@+id/progressBar"

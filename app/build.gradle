@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace 'com.cashley.app'
+    namespace 'com.rewardpay.app'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.cashley.app"
+        applicationId "com.rewardpay.app"
         minSdk 24
         targetSdk 33
         versionCode 1

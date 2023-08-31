@@ -26,10 +26,10 @@
 -dontwarn org.conscrypt.**
 -keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
 
--keep class com.cashley.app.activity.LoginActivity2 { *; }
--keep class com.cashley.app.api.* { *; }
--keep class com.cashley.app.model.* { *; }
--keep class com.cashley.app.utils*{*;}
+-keep class com.rewardpay.app.activity.LoginActivity2 { *; }
+-keep class com.rewardpay.app.api.* { *; }
+-keep class com.rewardpay.app.model.* { *; }
+-keep class com.rewardpay.app.utils*{*;}
 
 -dontwarn com.google.protobuf.java_com_google_android_gmscore_sdk_target_granule__proguard_group_gtm_N1281923064GeneratedExtensionRegistryLite**
 
