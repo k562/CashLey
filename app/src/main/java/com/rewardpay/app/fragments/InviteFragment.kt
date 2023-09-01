@@ -25,6 +25,7 @@ import com.rewardpay.app.R
 import com.rewardpay.app.databinding.FragmentInviteBinding
 import com.rewardpay.app.util.MyPreference
 import com.rewardpay.app.util.NetworkConfig
+import com.rewardpay.app.util.NetworkConnection
 import com.rewardpay.app.viewmodel.ViewModelClass
 
 
@@ -174,6 +175,38 @@ class InviteFragment : Fragment() {
 
     private fun apiHit() {
         binding.progressBar.visibility = View.VISIBLE
+        binding.lottieAnimation.pauseAnimation()
+
+//        NetworkConnection(aContext).observe(requireActivity(), Observer { isConnected ->
+//            if (isConnected) {
+//                viewModel.getInvite(
+//                    MyPreference.getUserId(aContext).toString(),
+//                    MyPreference.getSecurityToken(aContext),
+//                    BuildConfig.VERSION_NAME,
+//                    BuildConfig.VERSION_CODE.toString()
+//                ).observe(requireActivity(),
+//                    Observer {
+//                        binding.lottieAnimation.playAnimation()
+//                        binding.progressBar.visibility = View.GONE
+//                        binding.copy.text = it.data.referCode
+//                        binding.perRefer.text = "Per Refer Coins " + it.data.perRefer
+//                        binding.tvOfferAFriend.text = it.data.description
+//                        other = it.data.other
+//                        facebook = it.data.facebook
+//                        telegram = it.data.telegram
+//                        whatsapp = it.data.telegram
+//                    })
+//            }
+//            else
+//            {
+//                Toast.makeText(
+//                    aContext,
+//                    "Please Check Your Internet Connection.",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//            }
+//        })
+
         if (NetworkConfig().networkIsConnected(aContext)) {
             viewModel.getInvite(
                 MyPreference.getUserId(aContext).toString(),
@@ -182,6 +215,7 @@ class InviteFragment : Fragment() {
                 BuildConfig.VERSION_CODE.toString()
             ).observe(requireActivity(),
                 Observer {
+                    binding.lottieAnimation.playAnimation()
                     binding.progressBar.visibility = View.GONE
                     binding.copy.text = it.data.referCode
                     binding.perRefer.text = "Per Refer Coins " + it.data.perRefer

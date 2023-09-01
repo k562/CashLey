@@ -53,12 +53,12 @@
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/balance"
+                app:layout_constraintBottom_toTopOf="@+id/totalCoins"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/balance"
+                android:id="@+id/totalCoins"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/coins_icon_1"
@@ -83,7 +83,7 @@
                 android:drawablePadding="0dp"
                 android:drawableStart="@drawable/ic_rupee_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/balance"
+                app:layout_constraintStart_toEndOf="@id/totalCoins"
                 app:layout_constraintTop_toBottomOf="@+id/availableBalance" />
 
             <ImageView

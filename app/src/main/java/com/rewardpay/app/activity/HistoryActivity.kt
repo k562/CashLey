@@ -29,7 +29,8 @@ class HistoryActivity : AppCompatActivity() {
     private var referHistory = ArrayList<HistoryData.Data.ReferHistory>()
     private var offerHistory = ArrayList<HistoryData.Data.OfferHistory>()
     private lateinit var viewModel: ViewModelClass
-    private var currentBalance: String? = "00"
+    private var totalCoins: String? = "00"
+    private var totalAmount: String? = "00"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +57,8 @@ class HistoryActivity : AppCompatActivity() {
         //redeem now button
         binding.redeemNow.setOnClickListener {
             val intent = Intent(this, RedeemActivity::class.java)
-            intent.putExtra("currentBalance", currentBalance)
+            intent.putExtra("Total_Coins", totalCoins)
+            intent.putExtra("Total_Amount",totalAmount)
             startActivity(intent)
         }
 
@@ -118,11 +120,13 @@ class HistoryActivity : AppCompatActivity() {
 
                     referHistory = it.data.referHistory
                     offerHistory = it.data.offerHistory
-                    binding.referAmount.text = it.data.currentBalance.currentBalance
+                    binding.totalCoins.text = it.data.currentCoinBalance.currentCoinBalance
+                    binding.totalAmount.text=it.data.currentRupeeBalance.CurrentRupeeBalance
                     binding.referRecyclerView.layoutManager = LinearLayoutManager(this)
                     binding.referRecyclerView.adapter =
                         HistoryRecyclerAdapter(referHistory, this)
-                    currentBalance = it.data.currentBalance.currentBalance
+                    totalCoins = it.data.currentCoinBalance.currentCoinBalance
+                    totalAmount=it.data.currentRupeeBalance.CurrentRupeeBalance
 
                     if (referHistory.isEmpty()) {
                         binding.referRecyclerView.visibility = View.GONE

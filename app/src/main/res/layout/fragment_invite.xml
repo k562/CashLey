@@ -101,13 +101,13 @@
                 android:text="Earn upto ₹5000 every day by inviting your friend to CashLey"
                 android:textColor="@color/off_black"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toTopOf="@+id/animation_view"
+                app:layout_constraintBottom_toTopOf="@+id/lottieAnimation"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linear" />
 
             <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/animation_view"
+                android:id="@+id/lottieAnimation"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:scaleType="centerCrop"
@@ -115,7 +115,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvOfferAFriend"
-                app:lottie_autoPlay="true"
+                app:lottie_autoPlay="false"
                 app:lottie_loop="true"
                 app:lottie_rawRes="@raw/gift_lottie_animation" />
 
@@ -130,7 +130,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/shareFriend"
-                app:layout_constraintTop_toBottomOf="@+id/animation_view"/>
+                app:layout_constraintTop_toBottomOf="@+id/lottieAnimation"/>
 
             <TextView
                 android:id="@+id/shareFriend"

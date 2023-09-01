@@ -24,7 +24,8 @@ import java.util.concurrent.TimeUnit
 class RedeemActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRedeemBinding
-    private var currentBalance: String? = "00"
+    private var totalCoins: String? = "00"
+    private var totalAmount: String? = "00"
     private lateinit var viewModel: ViewModelClass
     private var rewardedAd: MaxRewardedAd?=null
     private var retryAttempt = 0.0
@@ -44,10 +45,12 @@ class RedeemActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[ViewModelClass::class.java]
 
         if (intent != null) {
-            currentBalance = intent.getStringExtra("currentBalance")
+            totalCoins = intent.getStringExtra("Total_Coins")
+            totalAmount=intent.getStringExtra("Total_Amount")
         }
 
-        binding.balance.text = currentBalance
+        binding.totalCoins.text = totalCoins
+        binding.totalAmount.text=totalAmount
 
         //redeem now
         binding.redeemNowButton.setOnClickListener {
@@ -115,7 +118,8 @@ class RedeemActivity : AppCompatActivity() {
         ).observe(this,
             Observer {
                 binding.progressBar.visibility = View.GONE
-                binding.balance.text = it.data.currentBalance
+                binding.totalCoins.text = it.data.currentCoinBalance
+                binding.totalAmount.text=it.data.currentRupeeBalance
                 binding.etMobileNumber.text.clear()
                 binding.upiId.text.clear()
                 binding.amount.text.clear()

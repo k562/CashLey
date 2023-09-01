@@ -12,8 +12,10 @@ data class RedeemNow(
     val status: Int
 ) {
     data class Data(
-        @SerializedName("currentBalance")
-        val currentBalance: String,
+        @SerializedName("currentCoinBalance")
+        val currentCoinBalance: String,
+        @SerializedName("currentRupeeBalance")
+        val currentRupeeBalance:String,
         @SerializedName("status")
         val status: String
     )

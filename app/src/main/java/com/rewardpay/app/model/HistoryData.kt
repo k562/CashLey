@@ -14,16 +14,21 @@ data class HistoryData(
     data class Data(
         @SerializedName("referHistory")
         val referHistory: ArrayList<ReferHistory>,
-//        @SerializedName("totalReferAmount")
-//        val totalReferAmount: Int,
-        @SerializedName("currentBalance")
-        val currentBalance: CurrentBalance,
+        @SerializedName("currentRupeeBalance")
+        val currentRupeeBalance: CurrentRupeeBalance,
+        @SerializedName("currentCoinBalance")
+        val currentCoinBalance: CurrentCoinBalance,
         @SerializedName("offerHistory")
-        val offerHistory:ArrayList<OfferHistory>
+        val offerHistory:ArrayList<OfferHistory>,
     ) {
-        data class CurrentBalance(
-            @SerializedName("currentBalance")
-            val currentBalance: String
+        data class CurrentCoinBalance(
+            @SerializedName("currentCoinBalance")
+            val currentCoinBalance: String?
+        )
+
+        data class CurrentRupeeBalance(
+            @SerializedName("currentRupeeBalance")
+            val CurrentRupeeBalance: String?
         )
 
         data class OfferHistory(
