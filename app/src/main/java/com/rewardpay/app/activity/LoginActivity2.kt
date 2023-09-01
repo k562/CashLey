@@ -10,7 +10,9 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.android.installreferrer.api.InstallReferrerClient
@@ -111,12 +113,12 @@ class LoginActivity2 : AppCompatActivity(), InstallReferrerStateListener {
 
         //privacy policy
         binding.txtPrivacy.setOnClickListener {
-            openTab("https://www.google.com/")
+            openTab("https://rewardpay.app/privacy_policy.html")
         }
 
         //terms & conditions
         binding.txtTermcondition.setOnClickListener {
-            openTab("https://www.google.com/")
+            openTab("https://rewardpay.app/terms_condition.html")
         }
 
     }
@@ -352,11 +354,11 @@ class LoginActivity2 : AppCompatActivity(), InstallReferrerStateListener {
         // to set the toolbar color use CustomTabColorSchemeParams
         // since CustomTabsIntent.Builder().setToolBarColor() is deprecated
 
-//        val params = CustomTabColorSchemeParams.Builder()
-//        params.setToolbarColor(ContextCompat.getColor(this, R.color.custom_theme_color))
-//        builder.setDefaultColorSchemeParams(params.build())
-//        // shows the title of web-page in toolbar
-//        builder.setShowTitle(true)
+        val params = CustomTabColorSchemeParams.Builder()
+        params.setToolbarColor(ContextCompat.getColor(this, R.color.themeColor))
+        builder.setDefaultColorSchemeParams(params.build())
+        // shows the title of web-page in toolbar
+        builder.setShowTitle(true)
 
         // setShareState(CustomTabsIntent.SHARE_STATE_ON) will add a menu to share the web-page
         builder.setShareState(CustomTabsIntent.SHARE_STATE_ON)

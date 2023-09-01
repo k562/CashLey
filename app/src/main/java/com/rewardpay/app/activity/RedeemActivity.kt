@@ -3,9 +3,11 @@ package com.rewardpay.app.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ReportFragment.Companion.reportFragment
 import androidx.lifecycle.ViewModelProvider
 import com.applovin.mediation.MaxAd
 import com.applovin.mediation.MaxError
@@ -15,10 +17,16 @@ import com.applovin.mediation.ads.MaxRewardedAd
 import com.applovin.sdk.AppLovinSdk
 import com.applovin.sdk.AppLovinSdkConfiguration
 import com.rewardpay.app.BuildConfig
+import com.rewardpay.app.api.RestClient
 import com.rewardpay.app.databinding.ActivityRedeemBinding
+import com.rewardpay.app.model.RedeemNow
+import com.rewardpay.app.util.MyApplication
 import com.rewardpay.app.util.MyPreference
 import com.rewardpay.app.util.NetworkConfig
 import com.rewardpay.app.viewmodel.ViewModelClass
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.concurrent.TimeUnit
 
 class RedeemActivity : AppCompatActivity() {
@@ -107,24 +115,67 @@ class RedeemActivity : AppCompatActivity() {
     }
 
     fun apiHit() {
-        viewModel.getRedeemAmount(
-            MyPreference.getUserId(this).toString(),
-            MyPreference.getSecurityToken(this),
-            BuildConfig.VERSION_NAME,
-            BuildConfig.VERSION_CODE.toString(),
-            binding.etMobileNumber.text.toString(),
-            binding.upiId.text.toString(),
-            binding.amount.text.toString()
-        ).observe(this,
-            Observer {
-                binding.progressBar.visibility = View.GONE
-                binding.totalCoins.text = it.data.currentCoinBalance
-                binding.totalAmount.text=it.data.currentRupeeBalance
-                binding.etMobileNumber.text.clear()
-                binding.upiId.text.clear()
-                binding.amount.text.clear()
-                Toast.makeText(this, it.data.status, Toast.LENGTH_SHORT).show()
-            })
+//        viewModel.getRedeemAmount(
+//            MyPreference.getUserId(this).toString(),
+//            MyPreference.getSecurityToken(this),
+//            BuildConfig.VERSION_NAME,
+//            BuildConfig.VERSION_CODE.toString(),
+//            binding.etMobileNumber.text.toString(),
+//            binding.upiId.text.toString(),
+//            binding.amount.text.toString()
+//        ).observe(this,
+//            Observer {
+//                it
+//                binding.progressBar.visibility = View.GONE
+//                binding.totalCoins.text = it.data.currentCoinBalance
+//                binding.totalAmount.text=it.data.currentRupeeBalance
+//                binding.etMobileNumber.text.clear()
+//                binding.upiId.text.clear()
+//                binding.amount.text.clear()
+//                Toast.makeText(this, it.data.status, Toast.LENGTH_SHORT).show()
+//            })
+
+        //invalid user
+        val call: Call<RedeemNow> = RestClient().getApi()
+            .getRedeemAmount(MyPreference.getUserId(this).toString(),
+                MyPreference.getSecurityToken(this),
+                BuildConfig.VERSION_NAME,
+                BuildConfig.VERSION_CODE.toString(),
+                binding.etMobileNumber.text.toString(),
+                binding.upiId.text.toString(),
+                binding.amount.text.toString())
+        call.enqueue(object : Callback<RedeemNow> {
+            override fun onResponse(call: Call<RedeemNow>, response: Response<RedeemNow>) {
+                if (response.body() != null) {
+                    if (response.isSuccessful && response.body()?.status == 200) {
+                        binding.progressBar.visibility = View.GONE
+                        binding.totalCoins.text = response.body()?.data?.currentCoinBalance
+                        binding.totalAmount.text=response.body()?.data?.currentRupeeBalance
+                        binding.etMobileNumber.text.clear()
+                        binding.upiId.text.clear()
+                        binding.amount.text.clear()
+                        Toast.makeText(this@RedeemActivity, response.body()?.data?.status, Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(
+                            MyApplication.appContext,
+                            response.body()!!.message,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                } else {
+                    Toast.makeText(
+                        MyApplication.appContext,
+                        response.errorBody().toString(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+
+            override fun onFailure(call: Call<RedeemNow>, t: Throwable) {
+                Log.d("error", t.message.toString())
+                Toast.makeText(MyApplication.appContext, t.message, Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     private fun createAd()

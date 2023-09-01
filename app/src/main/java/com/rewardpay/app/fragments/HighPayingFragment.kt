@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.rewardpay.app.adapter.HighPayingAdapter
 import com.rewardpay.app.databinding.FragmentHighPayingBinding
 import com.rewardpay.app.model.AllOfferData
@@ -43,7 +44,7 @@ class HighPayingFragment(highestPaying: ArrayList<HomeData.Data.HighestPaying>) 
         if (highestPaying1!=null) {
             binding.allOfferRecyclerView.visibility=View.VISIBLE
             binding.noListFound.visibility=View.GONE
-            binding.allOfferRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+            binding.allOfferRecyclerView.layoutManager = LinearLayoutManager(requireContext(),RecyclerView.VERTICAL,false)
             binding.allOfferRecyclerView.adapter = HighPayingAdapter(highestPaying1, aContext)
         }
         else

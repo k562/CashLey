@@ -64,7 +64,7 @@ class InviteFragment : Fragment() {
             activity?.onBackPressedDispatcher?.onBackPressed()
         }
 
-        //app lonin
+        //appLovin
         AppLovinSdk.getInstance(activity).setMediationProvider("max")
         AppLovinSdk.getInstance(activity).initializeSdk({ configuration: AppLovinSdkConfiguration ->
             // AppLovin SDK is initialized, start loading ads
@@ -243,7 +243,6 @@ class InviteFragment : Fragment() {
             }
 
             override fun onAdDisplayed(p0: MaxAd?) {
-
             }
 
             override fun onAdHidden(p0: MaxAd?) {
@@ -251,7 +250,6 @@ class InviteFragment : Fragment() {
             }
 
             override fun onAdClicked(p0: MaxAd?) {
-                TODO("Not yet implemented")
             }
 
             override fun onAdLoadFailed(p0: String?, p1: MaxError?) {
@@ -263,11 +261,9 @@ class InviteFragment : Fragment() {
             }
 
             override fun onAdExpanded(p0: MaxAd?) {
-                TODO("Not yet implemented")
             }
 
             override fun onAdCollapsed(p0: MaxAd?) {
-                TODO("Not yet implemented")
             }
 
         })

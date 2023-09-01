@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.applovin.mediation.MaxAd
 import com.applovin.mediation.MaxAdViewAdListener
 import com.applovin.mediation.MaxError
@@ -56,10 +57,15 @@ class HistoryActivity : AppCompatActivity() {
 
         //redeem now button
         binding.redeemNow.setOnClickListener {
-            val intent = Intent(this, RedeemActivity::class.java)
-            intent.putExtra("Total_Coins", totalCoins)
-            intent.putExtra("Total_Amount",totalAmount)
-            startActivity(intent)
+            if (totalAmount?.toDouble()?.toInt() != 0) {
+                val intent = Intent(this, RedeemActivity::class.java)
+                intent.putExtra("Total_Coins", totalCoins)
+                intent.putExtra("Total_Amount", totalAmount)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "You have no enough coins to redeem..", Toast.LENGTH_SHORT)
+                    .show()
+            }
         }
 
         //refer history
@@ -68,7 +74,7 @@ class HistoryActivity : AppCompatActivity() {
             binding.offerHistory.setTextColor(resources.getColor(R.color.black))
             binding.referHistory.setBackgroundResource(R.drawable.refer_history_background)
             binding.offerHistory.setBackgroundResource(R.drawable.refer_history_background_white)
-            binding.referRecyclerView.layoutManager = LinearLayoutManager(this)
+            binding.referRecyclerView.layoutManager = LinearLayoutManager(this,RecyclerView.VERTICAL,false)
             binding.referRecyclerView.adapter =
                 HistoryRecyclerAdapter(referHistory, this)
             if (referHistory.isEmpty()) {
@@ -86,7 +92,7 @@ class HistoryActivity : AppCompatActivity() {
             binding.offerHistory.setTextColor(resources.getColor(R.color.white))
             binding.referHistory.setBackgroundResource(R.drawable.refer_history_background_white)
             binding.offerHistory.setBackgroundResource(R.drawable.refer_history_background)
-            binding.referRecyclerView.layoutManager = LinearLayoutManager(this)
+            binding.referRecyclerView.layoutManager = LinearLayoutManager(this,RecyclerView.VERTICAL,false)
             binding.referRecyclerView.adapter =
                 OfferHistoryAdapter(offerHistory, this)
 
@@ -121,12 +127,12 @@ class HistoryActivity : AppCompatActivity() {
                     referHistory = it.data.referHistory
                     offerHistory = it.data.offerHistory
                     binding.totalCoins.text = it.data.currentCoinBalance.currentCoinBalance
-                    binding.totalAmount.text=it.data.currentRupeeBalance.CurrentRupeeBalance
-                    binding.referRecyclerView.layoutManager = LinearLayoutManager(this)
+                    binding.totalAmount.text = it.data.currentRupeeBalance.CurrentRupeeBalance
+                    binding.referRecyclerView.layoutManager = LinearLayoutManager(this,RecyclerView.VERTICAL,false)
                     binding.referRecyclerView.adapter =
                         HistoryRecyclerAdapter(referHistory, this)
                     totalCoins = it.data.currentCoinBalance.currentCoinBalance
-                    totalAmount=it.data.currentRupeeBalance.CurrentRupeeBalance
+                    totalAmount = it.data.currentRupeeBalance.CurrentRupeeBalance
 
                     if (referHistory.isEmpty()) {
                         binding.referRecyclerView.visibility = View.GONE

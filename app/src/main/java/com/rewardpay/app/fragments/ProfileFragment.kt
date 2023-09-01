@@ -8,7 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.content.ContextCompat
 import com.applovin.mediation.MaxAd
 import com.applovin.mediation.MaxAdViewAdListener
 import com.applovin.mediation.MaxError
@@ -58,15 +60,15 @@ class ProfileFragment : Fragment() {
             startActivity(intent)
         }
         binding.llPrivacyPolicy.setOnClickListener {
-            openTab("https://www.google.com")
+            openTab("https://rewardpay.app/privacy_policy.html")
         }
 
         binding.llTermServices.setOnClickListener {
-            openTab("https://www.google.com")
+            openTab("https://rewardpay.app/terms_condition.html")
         }
 
         binding.llAboutUs.setOnClickListener {
-            openTab("https://www.google.com")
+            openTab("https://rewardpay.app/about_us.html")
         }
 
         //whatsapp
@@ -108,11 +110,11 @@ class ProfileFragment : Fragment() {
         // to set the toolbar color use CustomTabColorSchemeParams
         // since CustomTabsIntent.Builder().setToolBarColor() is deprecated
 
-//        val params = CustomTabColorSchemeParams.Builder()
-//        params.setToolbarColor(ContextCompat.getColor(this, R.color.custom_theme_color))
-//        builder.setDefaultColorSchemeParams(params.build())
+        val params = CustomTabColorSchemeParams.Builder()
+        params.setToolbarColor(ContextCompat.getColor(requireContext(), R.color.themeColor))
+        builder.setDefaultColorSchemeParams(params.build())
 //        // shows the title of web-page in toolbar
-//        builder.setShowTitle(true)
+        builder.setShowTitle(true)
 
         // setShareState(CustomTabsIntent.SHARE_STATE_ON) will add a menu to share the web-page
         builder.setShareState(CustomTabsIntent.SHARE_STATE_ON)

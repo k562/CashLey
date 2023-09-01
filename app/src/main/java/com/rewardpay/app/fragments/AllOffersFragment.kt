@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.rewardpay.app.adapter.AllOfferAdapter
 import com.rewardpay.app.databinding.FragmentAllOffersBinding
 import com.rewardpay.app.model.HomeData
@@ -41,7 +42,7 @@ class AllOffersFragment(allOffers: ArrayList<HomeData.Data.AllOffer>) : Fragment
         if (allOffers1!=null) {
             binding.allOfferRecyclerView.visibility=View.VISIBLE
             binding.noListFound.visibility=View.GONE
-            binding.allOfferRecyclerView.layoutManager = LinearLayoutManager(aContext)
+            binding.allOfferRecyclerView.layoutManager = LinearLayoutManager(aContext,RecyclerView.VERTICAL,false)
             binding.allOfferRecyclerView.adapter = AllOfferAdapter(allOffers1, aContext)
         }
         else
