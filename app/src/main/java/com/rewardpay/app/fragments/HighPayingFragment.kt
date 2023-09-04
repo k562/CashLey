@@ -46,6 +46,7 @@ class HighPayingFragment(highestPaying: ArrayList<HomeData.Data.HighestPaying>) 
             binding.noListFound.visibility=View.GONE
             binding.allOfferRecyclerView.layoutManager = LinearLayoutManager(requireContext(),RecyclerView.VERTICAL,false)
             binding.allOfferRecyclerView.adapter = HighPayingAdapter(highestPaying1, aContext)
+            binding.allOfferRecyclerView.setHasFixedSize(true)
         }
         else
         {

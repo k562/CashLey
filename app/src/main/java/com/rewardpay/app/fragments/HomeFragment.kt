@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,13 +15,21 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import com.applovin.mediation.MaxAd
 import com.applovin.mediation.MaxAdListener
 import com.applovin.mediation.MaxError
 import com.applovin.mediation.ads.MaxInterstitialAd
 import com.applovin.sdk.AppLovinSdk
 import com.applovin.sdk.AppLovinSdkConfiguration
+import com.google.android.material.tabs.TabLayoutMediator
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.rewardpay.app.BuildConfig
+import com.rewardpay.app.R
 import com.rewardpay.app.activity.HistoryActivity
 import com.rewardpay.app.adapter.FragmentAdapter
 import com.rewardpay.app.adapter.ViewPagerAdapter
@@ -29,11 +38,7 @@ import com.rewardpay.app.model.HomeData
 import com.rewardpay.app.util.MyPreference
 import com.rewardpay.app.util.NetworkConfig
 import com.rewardpay.app.viewmodel.ViewModelClass
-import com.google.android.material.tabs.TabLayoutMediator
-import com.karumi.dexter.Dexter
-import com.karumi.dexter.MultiplePermissionsReport
-import com.karumi.dexter.PermissionToken
-import com.karumi.dexter.listener.multi.MultiplePermissionsListener
+import me.relex.circleindicator.CircleIndicator
 import java.util.Timer
 import java.util.TimerTask
 import java.util.concurrent.TimeUnit
@@ -43,6 +48,9 @@ class HomeFragment : Fragment() {
     private lateinit var viewModel: ViewModelClass
     private var handler: Handler? = null
     var currentPage = 0
+    private var handler2:Handler?=null
+    private var timer2:Timer?=null
+    private var Update:Runnable?=null
     var timer: Timer? = null
     val DELAY_MS: Long = 500 //delay in milliseconds before task is to be executed
     val PERIOD_MS: Long = 3000 // time in milliseconds between successive task executions.
@@ -50,6 +58,9 @@ class HomeFragment : Fragment() {
     var sliderSize: Int? = 0
     private var interstitialAd: MaxInterstitialAd? = null
     private var retryAttempt = 0.0
+    private lateinit var autoSwipeHandler: Handler
+    private lateinit var autoSwipeRunnable: Runnable
+    private lateinit var autoSwipeCallback: ViewPager.OnPageChangeListener
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -70,8 +81,6 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this)[ViewModelClass::class.java]
-
-        binding.indicator.clearFocus()
 
         //adView
         // Make sure to set the mediation provider value to "max" to ensure proper functionality
@@ -263,13 +272,14 @@ class HomeFragment : Fragment() {
 
     fun viewpager() {
         if (handler == null) {
+
+            //existing code
             handler = Handler()
+
             val Update = Runnable {
-                if (currentPage == sliderSize) {
-                    currentPage = 0
-                }
-                binding.indicator.clearFocus()
-                binding.viewPager.setCurrentItem(currentPage++, true)
+                val currentItem = binding.viewPager.currentItem
+                val nextItem = if (currentItem < (binding.viewPager.adapter?.count?.minus(1) ?: 0)) currentItem + 1 else 0
+                binding.viewPager.setCurrentItem(nextItem, true)
             }
 
             val timer = Timer() // This will create a new Thread
@@ -281,6 +291,41 @@ class HomeFragment : Fragment() {
                 }
             }, 2500, 7500)
         }
+    }
+
+    fun viewpager2()
+    {
+        handler2= Handler(Looper.getMainLooper())
+
+        // Initialize the Timer
+        timer2= Timer()
+
+        if(handler2!=null && timer2!=null) {
+            Update = Runnable {
+                val currentItem = binding.viewPager.currentItem
+                val nextItem =
+                    if (currentItem < (binding.viewPager.adapter?.count?.minus(1) ?: 0)) {
+                        currentItem + 1
+                    } else {
+                        0
+                    }
+                handler2?.removeCallbacks(Update!!)
+                binding.viewPager.setCurrentItem(nextItem, true)
+            }
+
+            // Schedule a task to run repeatedly with a fixed interval
+            timer2?.scheduleAtFixedRate(object : TimerTask() {
+                override fun run() {
+                    // This code will run on a background thread
+                    // Use the Handler to update the UI on the main thread
+                    handler2?.post(Update!!)
+                }
+            }, 0, 2000) // Delay of 0 milliseconds, repeat every 1000 milliseconds (1 second)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
     }
 
     override fun onPause() {

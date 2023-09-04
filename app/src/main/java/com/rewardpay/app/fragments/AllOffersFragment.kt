@@ -44,6 +44,7 @@ class AllOffersFragment(allOffers: ArrayList<HomeData.Data.AllOffer>) : Fragment
             binding.noListFound.visibility=View.GONE
             binding.allOfferRecyclerView.layoutManager = LinearLayoutManager(aContext,RecyclerView.VERTICAL,false)
             binding.allOfferRecyclerView.adapter = AllOfferAdapter(allOffers1, aContext)
+            binding.allOfferRecyclerView.setHasFixedSize(true)
         }
         else
         {

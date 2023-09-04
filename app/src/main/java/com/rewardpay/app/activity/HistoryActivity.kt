@@ -77,6 +77,7 @@ class HistoryActivity : AppCompatActivity() {
             binding.referRecyclerView.layoutManager = LinearLayoutManager(this,RecyclerView.VERTICAL,false)
             binding.referRecyclerView.adapter =
                 HistoryRecyclerAdapter(referHistory, this)
+            binding.referRecyclerView.setHasFixedSize(true)
             if (referHistory.isEmpty()) {
                 binding.referRecyclerView.visibility = View.GONE
                 binding.noListFound.visibility = View.VISIBLE
@@ -95,6 +96,7 @@ class HistoryActivity : AppCompatActivity() {
             binding.referRecyclerView.layoutManager = LinearLayoutManager(this,RecyclerView.VERTICAL,false)
             binding.referRecyclerView.adapter =
                 OfferHistoryAdapter(offerHistory, this)
+            binding.referRecyclerView.setHasFixedSize(true)
 
             if (offerHistory.isEmpty()) {
                 binding.referRecyclerView.visibility = View.GONE
@@ -131,6 +133,7 @@ class HistoryActivity : AppCompatActivity() {
                     binding.referRecyclerView.layoutManager = LinearLayoutManager(this,RecyclerView.VERTICAL,false)
                     binding.referRecyclerView.adapter =
                         HistoryRecyclerAdapter(referHistory, this)
+                    binding.referRecyclerView.setHasFixedSize(true)
                     totalCoins = it.data.currentCoinBalance.currentCoinBalance
                     totalAmount = it.data.currentRupeeBalance.CurrentRupeeBalance
 

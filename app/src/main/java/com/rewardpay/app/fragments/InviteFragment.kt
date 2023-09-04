@@ -20,6 +20,7 @@ import com.applovin.mediation.MaxAdViewAdListener
 import com.applovin.mediation.MaxError
 import com.applovin.sdk.AppLovinSdk
 import com.applovin.sdk.AppLovinSdkConfiguration
+import com.iab.omid.library.applovin.adsession.Owner
 import com.rewardpay.app.BuildConfig
 import com.rewardpay.app.R
 import com.rewardpay.app.databinding.FragmentInviteBinding
